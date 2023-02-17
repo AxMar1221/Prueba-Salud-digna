@@ -1,18 +1,16 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom";
 
-import { FormsRoutes } from "../formulario"
-import { LoginPage } from "../auth"
+import { FormsRoutes } from "../formulario";
+import { LoginPage } from "../auth";
 
 export const AppRouter = () => {
   return (
     <>
+      <Routes>
+        <Route path="login" element={<LoginPage />} />
 
-        <Routes>
-            <Route path="login" element={ <LoginPage />}/>
-
-            <Route path="/*" element={ <FormsRoutes />} />
-
-        </Routes>
+        <Route path="/*" element={<FormsRoutes />} />
+      </Routes>
     </>
-  )
-}
+  );
+};

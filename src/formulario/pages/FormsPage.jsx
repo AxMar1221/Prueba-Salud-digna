@@ -49,6 +49,11 @@ function validatePhone (event) {
   setPhone(val);
 }
 
+const handleSubmit = (name, lastName, secondLastName, Data, phone, email) => {
+  console.log(name, lastName, secondLastName, Data, phone, email)
+  alert(`Datos del formulario:, ${name}, ${lastName}, ${secondLastName}, ${Data}, ${phone}, ${email}`)
+}
+
 return (
   <form>
       <Box my={2}>
@@ -103,7 +108,7 @@ return (
                   <Select name="rol" fullWidth label="Genero" color="success" onChange={(ev)=>setGenre(ev.target.value)} >
                     <MenuItem></MenuItem>
                     { genreData && genreData.map((d, i) => (
-                      <MenuItem key={d.id} value={d.id}>{d.desc}</MenuItem>
+                      <MenuItem key={d.id} value={d.desc}>{d.desc}</MenuItem>
                     ))}
                   </Select>
                 </FormControl>
@@ -140,7 +145,8 @@ return (
                       variant="contained"
                       color="success"
                       type="submit"
-                      disabled={!isPhoneValid}
+                      onClick={() => handleSubmit(name, lastName, secondLastName, Data, phone, email)}
+                      // disabled={!isPhoneValid}
                     >
                       Enviar
                     </Button>
