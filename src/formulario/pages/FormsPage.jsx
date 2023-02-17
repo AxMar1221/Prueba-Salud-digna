@@ -1,25 +1,35 @@
-// import { Cards } from "./Cards";
-import "./App.css";
 import {
-  Box,
-  Card,
-  CardContent,
-  FormControl,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
-import { LoadingButton } from "@mui/lab";
-import { useState } from "react";
+    Box,
+    Card,
+    CardContent,
+    FormControl,
+    Grid,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField,
+  } from "@mui/material";
+  import { LoadingButton } from "@mui/lab";
+  import { useState } from "react";
+  
+  const dataForm = [
+    {
+      id: 1,
+      desc: 'Mujer'
+    },
+    {
+      id: 2,
+      desc: 'Hombre'
+    },
+  ]
+  
 
-function App() {
+export const Forms = () => {
+
   const [loading, setLoading] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        {/* <Cards /> */}
+    <div>
         <Box my={2}>
           <Card>
             <CardContent>
@@ -61,14 +71,16 @@ function App() {
                     helperText="Campo obligatorio"
                   />
                 </Grid>
-                <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-                  <FormControl sx={{ width: "100%" }} helperText="Campo obligatorio">
-                    <InputLabel id="demo-label" color="success" >
+                <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
+                  <FormControl sx={{ width: "100%" }} >
+                    <InputLabel id="demo-label" color="success">
                       Genero
                     </InputLabel>
                     <Select name="rol" fullWidth label="Genero" color="success" >
-                      <MenuItem>Mujer</MenuItem>
-                      <MenuItem>Hombre</MenuItem>
+                      <MenuItem></MenuItem>
+                      { dataForm && dataForm.map((d, i) => (
+                        <MenuItem key={d.id} value={d.id}>{d.desc}</MenuItem>
+                      ))}
                     </Select>
                   </FormControl>
                   <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -83,7 +95,8 @@ function App() {
                     color="success"
                     helperText="Campo obligatorio"
                   />
-                                    <TextField
+                  
+                  <TextField
                     error={false}
                     label="Correo Electronico"
                     type="email"
@@ -94,23 +107,23 @@ function App() {
                     color="success"
                     helperText="Campo obligatorio"
                   />
-                    {/* <Box sx={{ "& > button": { m: 1 } }}>
+                    <Box sx={{ "& > button": { m: 1 } }}>
                       <LoadingButton
                         size="small"
                         loading={loading}
-                        variant="outlined"
+                        variant="contained"
+                        color="success"
                         disable
-                      ></LoadingButton>
-                    </Box> */}
+                      >
+                        Enviar
+                      </LoadingButton>
+                    </Box>
                   </Grid>
                 </Grid>
               </Grid>
             </CardContent>
           </Card>
         </Box>
-      </header>
     </div>
-  );
+  )
 }
-
-export default App;
