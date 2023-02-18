@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Navbar } from "../../shared/components/Navbar";
 import { Cards, Forms } from "../pages";
+import { Registers } from "../pages/Registers";
 
 export const FormsRoutes = () => {
   return (
@@ -11,8 +12,9 @@ export const FormsRoutes = () => {
         <Routes>
           <Route path="cards" element={<Cards />} />
           <Route path="form" element={<Forms />} />
+          <Route path="register" element={<Registers />} />
 
-          <Route path="/" element={<Navigate to="/Cards" />} />
+          <Route path="/" element={<Navigate to="/cards" />} />
         </Routes>
       </div>
     </>

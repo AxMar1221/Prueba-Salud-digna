@@ -116,9 +116,9 @@ return (
                 <TextField
                   required
                   error={phone && !isPhoneValid}
-                  label="Telefono"
+                  label="Teléfono"
                   type="number"
-                  name="telefono"
+                  name="tel"
                   margin="dense"
                   fullWidth
                   variant="outlined"
