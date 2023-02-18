@@ -41,7 +41,7 @@ export const Navbar = () => {
       <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
         <ul className="navbar-nav ml-auto">
           <span className="nav-item nav-link active">
-           <strong>Mario Hernández </strong><AccountCircleSharpIcon></AccountCircleSharpIcon> <small>Tachi</small>
+           <strong>Mario Hernández </strong><AccountCircleSharpIcon color="primary"></AccountCircleSharpIcon> <small>Tachi</small>
           </span>
           <Button variant="outlined" color="error" onClick={onLogout}>
             Logout
