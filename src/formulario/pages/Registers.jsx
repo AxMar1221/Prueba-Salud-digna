@@ -1,9 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import  React, { useState, useEffect } from "react";
 
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig/Firebase";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+
+import Swal from "sweetalert2";
+import { Delete } from "@mui/icons-material";
 
 export const Registers = () => {
 
@@ -19,6 +23,32 @@ export const Registers = () => {
       )
       // console.log(registers);
   }
+  const deleteRegister = async (id) => {
+    const registerDoc = doc(db, "registros", id)
+    await deleteDoc(registerDoc )
+    getRegisters()
+  }
+
+  const confirmDelete = (id) => {
+    Swal.fire({
+      title: '¿Eliminar registro?',
+      text: '',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3885d5',
+      confirmButtonText: 'si eliminar registro' 
+    }).then( (result) => {
+      if (result.isConfirmed ){
+        deleteRegister(id)
+        Swal.fire(
+          'Deleted!',
+          'Registro eliminado',
+          'success'
+        )
+      }
+    })
+  }
 
   useEffect( () => {
     getRegisters()
@@ -33,12 +63,13 @@ export const Registers = () => {
           <table className="table table-sm table-striped table-hover">
             <thead className="table-dark">
               <tr className="text-center">
-                <th >Nombre</th>
-                <th >Apellido Paterno</th>
-                <th >Apellido Materno</th>
+                <th className="text-start">Nombre</th>
+                <th className="text-start">Apellido Paterno</th>
+                <th className="text-start">Apellido Materno</th>
                 <th >Genero</th>
                 <th >Teléfono</th>
                 <th >Email</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -50,6 +81,17 @@ export const Registers = () => {
                   <td className="text-center">{registers.gender}</td>
                   <td className="text-center">{registers.tel}</td>
                   <td>{registers.email}</td>
+                  <td>
+                    <Button
+                      size="small"
+                      variant="contained"
+                      color="error"
+                      startIcon={<Delete />}
+                      onClick={() => {confirmDelete(registers.id)}}
+                    >
+                      Eliminar
+                    </Button>
+                  </td>
 
                 </tr>
               ))}
@@ -57,7 +99,7 @@ export const Registers = () => {
           </table>
 
           <div className="text-end">
-            <Link to="/form">
+            <Link to="/form" className="btn">
               <Button
                 size="small"
                 variant="contained"

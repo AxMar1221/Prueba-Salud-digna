@@ -69,14 +69,14 @@ function validatePhone (event) {
 
 const handleSubmit = (name, lastName, secondLastName, Data, phone, email) => {
   console.log(name, lastName, secondLastName, Data, phone, email)
-  alert(`Datos del formulario:, ${name}, ${lastName}, ${secondLastName}, ${Data}, ${phone}, ${email}`)
+  // alert(`Datos del formulario:, ${name}, ${lastName}, ${secondLastName}, ${Data}, ${phone}, ${email}`)
 }
 
 return (
   <form onSubmit={store}> 
       <Box my={2}>
         <Card>
-          <CardContent>
+          <CardContent> 
             <Grid container direction="row" spacing={2}>
               <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                 <TextField
