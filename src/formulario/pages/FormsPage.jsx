@@ -1,3 +1,7 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../firebaseConfig/Firebase";
 import {
   Box,
   Card,
@@ -10,7 +14,6 @@ import {
   TextField,
 } from "@mui/material";
 import Button from '@mui/material/Button';
-import { useState } from "react";
 
 const genreData = [
   {
@@ -33,6 +36,21 @@ const [Data, setGenre] = useState();
 const [phone, setPhone] = useState();
 const [isPhoneValid, setIsPhoneValid] = useState();
 const [email, setEmail] = useState();
+const navigate = useNavigate();
+const registerCollection = collection(db, "registros")
+
+const store = async (ev) => {
+  ev.preventDefault();
+  await addDoc( registerCollection, {
+    name: name,
+    lastName: lastName,
+    secondLastName: secondLastName,
+    gender: Data,
+    tel: phone,
+    email: email
+  });
+  navigate('/register')
+}
 
 function validatePhone (event) {
   const val = event.target.value;
@@ -55,7 +73,7 @@ const handleSubmit = (name, lastName, secondLastName, Data, phone, email) => {
 }
 
 return (
-  <form>
+  <form onSubmit={store}> 
       <Box my={2}>
         <Card>
           <CardContent>

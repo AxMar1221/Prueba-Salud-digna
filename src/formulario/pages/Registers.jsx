@@ -1,41 +1,28 @@
-/* eslint-disable no-undef */
 import  React, { useState, useEffect } from "react";
-import { Button } from "@mui/material";
-import { collection, getDocs, getDoc, deleteDoc } from "firebase/firestore";
-import { db } from "../../firebaseConfig/Firebase"
-import { Delete } from "@mui/icons-material";
-import { Link, link } from "react-router-dom";
 
-import Swal from "sweetalert2";
-// import withReactContent from "sweetalert2-react-content";
-import { async } from "@firebase/util";
-// const MySwal = withReactContent(Swal);
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebaseConfig/Firebase";
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const Registers = () => {
 
   const [registers, setRegisters ] = useState( [] );
-
   const registersCollection = collection(db, "registros");
 
   const getRegisters = async () => {
     const data = await getDocs(registersCollection);
-    console.log(data.docs);
+    // console.log(data.docs);
 
     setRegisters(
       data.docs.map((doc) => ({...doc.data(), id:doc.id}))
       )
-      console.log(registers);
-  }
-
-  const deleteRegister = async (id) => {
-    const registerDoc = doc(db, "registers", id)
-    await deleteDoc(registerDoc)
-    getRegisters()
+      // console.log(registers);
   }
 
   useEffect( () => {
     getRegisters()
-  }, [])
+  },[])
 
   return (
     <>
@@ -52,7 +39,6 @@ export const Registers = () => {
                 <th >Genero</th>
                 <th >Teléfono</th>
                 <th >Email</th>
-                <th ></th>
               </tr>
             </thead>
             <tbody>
@@ -63,21 +49,25 @@ export const Registers = () => {
                   <td>{registers.secondLastName}</td>
                   <td className="text-center">{registers.gender}</td>
                   <td className="text-center">{registers.tel}</td>
-                  <td className="text-center">{registers.email}</td>
-                  <td className="text-center">
-                    <Button
-                      startIcon={ <Delete />}
-                      size="small"
-                      variant="contained"
-                      color="error"
-                      onClick={() => {deleteRegister(registers.id)}}
-                    >Eliminar</Button>
-                  </td>
+                  <td>{registers.email}</td>
 
                 </tr>
               ))}
             </tbody>
           </table>
+
+          <div className="text-end">
+            <Link to="/form">
+              <Button
+                size="small"
+                variant="contained"
+                color="success"
+              >
+                Nuevo Registro
+              </Button>
+            </Link>
+
+          </div>
 
         </div>
       </div>
