@@ -44,15 +44,15 @@ export const Registers = () => {
         <div className="col">
 
           <table className="table table-sm table-striped table-hover">
-            <thead>
+            <thead className="table-dark">
               <tr className="text-center">
-                <th>Nombre</th>
-                <th>Apellido Paterno</th>
-                <th>Apellido Materno</th>
-                <th>Genero</th>
-                <th>Teléfono</th>
-                <th>Email</th>
-                <th></th>
+                <th >Nombre</th>
+                <th >Apellido Paterno</th>
+                <th >Apellido Materno</th>
+                <th >Genero</th>
+                <th >Teléfono</th>
+                <th >Email</th>
+                <th ></th>
               </tr>
             </thead>
             <tbody>
@@ -61,10 +61,10 @@ export const Registers = () => {
                   <td>{registers.name}</td>
                   <td>{registers.lastName}</td>
                   <td>{registers.secondLastName}</td>
-                  <td>{registers.gender}</td>
-                  <td>{registers.tel}</td>
-                  <td>{registers.email}</td>
-                  <td>
+                  <td className="text-center">{registers.gender}</td>
+                  <td className="text-center">{registers.tel}</td>
+                  <td className="text-center">{registers.email}</td>
+                  <td className="text-center">
                     <Button
                       startIcon={ <Delete />}
                       size="small"
