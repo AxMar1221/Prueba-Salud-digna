@@ -1,6 +1,5 @@
-import { Button } from "@mui/material";
+import { Avatar, Button, IconButton } from "@mui/material";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
 
 export const Navbar = () => {
   const navigate = useNavigate();
@@ -41,9 +40,22 @@ export const Navbar = () => {
       <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
         <ul className="navbar-nav ml-auto">
           <span className="nav-item nav-link active">
-           <strong>Mario Hernández </strong><AccountCircleSharpIcon color="primary"></AccountCircleSharpIcon> <small>Tachi</small>
+            <strong>Mario Hernández</strong>
+            <IconButton>
+              <Avatar
+                alt="Tachi GitHub"
+                src="https://avatars.githubusercontent.com/u/85906328?v=4"
+                sx={{ width: 24, height: 24 }}
+              />
+            </IconButton>
+            <small>Tachi</small>
           </span>
-          <Button variant="outlined" color="error" onClick={onLogout}>
+          <Button
+            size="small"
+            variant="outlined"
+            color="error"
+            onClick={onLogout}
+          >
             Logout
           </Button>
         </ul>

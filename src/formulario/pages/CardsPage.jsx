@@ -1,4 +1,6 @@
-import { Card, CardHeader, CardMedia, Grid } from "@mui/material";
+import { Edit } from "@mui/icons-material";
+import { Button, Card, CardHeader, CardMedia, Grid } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const Cards = () => {
   const gridContent = (
@@ -21,5 +23,32 @@ export const Cards = () => {
     </Grid>
   );
 
-  return <div className="container ">{gridContent}</div>;
+  return (
+    <div className="container ">
+      <div className="text-center">
+        <Link to="/form" className="btn">
+          <Button
+            size="small"
+            variant="contained"
+            color="success"
+            startIcon={<Edit />}
+          >
+            Nuevo Registro
+          </Button>
+        </Link>
+        <Link to="/register" className="btn">
+          <Button
+            size="small"
+            variant="contained"
+            color="success"
+            startIcon={<Edit />}
+          >
+            Editar Registro
+          </Button>
+        </Link>
+      </div>
+
+      <div className="container mt-3">{gridContent}</div>
+    </div>
+  );
 };

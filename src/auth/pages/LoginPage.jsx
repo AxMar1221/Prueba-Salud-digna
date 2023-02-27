@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, CardContent, Grid, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 export const LoginPage = () => {
@@ -10,13 +10,18 @@ export const LoginPage = () => {
   };
 
   return (
-    <div className="container mt-3">
-      <h1>Login</h1>
-      <hr />
-
-      <Button variant="outlined" color="error" onClick={onLogin}>
-        Login
-      </Button>
-    </div>
+    <>
+      <CardContent>
+        <Grid container>
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            <Typography variant="h5">Login</Typography>
+            <hr />
+            <Button variant="outlined" color="error" onClick={onLogin}>
+              Login
+            </Button>
+          </Grid>
+        </Grid>
+      </CardContent>
+    </>
   );
 };

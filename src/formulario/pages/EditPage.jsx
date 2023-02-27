@@ -1,9 +1,11 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { collection, addDoc } from "firebase/firestore";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { getDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig/Firebase";
 import {
   Box,
+  Button,
   Card,
   CardContent,
   FormControl,
@@ -14,8 +16,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Button from "@mui/material/Button";
-import { Home, Send } from "@mui/icons-material";
+import { Cancel, Send } from "@mui/icons-material";
 
 const genreData = [
   {
@@ -28,7 +29,7 @@ const genreData = [
   },
 ];
 
-export const Forms = () => {
+export const EditPage = () => {
   const [name, setName] = useState();
   const [lastName, setLastName] = useState();
   const [secondLastName, setSecondLastName] = useState();
@@ -37,21 +38,7 @@ export const Forms = () => {
   const [isPhoneValid, setIsPhoneValid] = useState();
   const [email, setEmail] = useState();
   const navigate = useNavigate();
-  const registerCollection = collection(db, "registros");
-
-  const store = async (ev) => {
-    ev.preventDefault();
-
-    await addDoc(registerCollection, {
-      name: name,
-      lastName: lastName,
-      secondLastName: secondLastName,
-      gender: Data,
-      tel: phone,
-      email: email,
-    });
-    navigate("/register");
-  };
+  const { id } = useParams();
 
   function validatePhone(event) {
     const val = event.target.value;
@@ -67,72 +54,98 @@ export const Forms = () => {
     setPhone(val);
   }
 
-  const handleSubmit = (name, lastName, secondLastName, Data, phone, email) => {
-    console.log(name, lastName, secondLastName, Data, phone, email);
-    // alert(`Datos del formulario:, ${name}, ${lastName}, ${secondLastName}, ${Data}, ${phone}, ${email}`)
+  // const handleSubmit = () => {
+  // };
+
+  const update = async (e) => {
+    e.preventDefault();
+    const register = doc(db, "registros", id);
+    const data = {
+      name: name,
+      lastName: lastName,
+      secondLastName: secondLastName,
+      gender: Data,
+      tel: phone,
+      email: email,
+    };
+    await updateDoc(register, data);
+    navigate("/register");
   };
+
+  const getRegistersById = async (id) => {
+    const register = await getDoc(doc(db, "registros", id));
+    if (register.exists()) {
+      setName(register.data().name);
+      setLastName(register.data().lastName);
+      setSecondLastName(register.data().secondLastName);
+      setGenre(register.data().Data);
+      setPhone(register.data().phone);
+      setEmail(register.data().email);
+    } else {
+      console.log("Registro no existe");
+    }
+  };
+
+  useEffect(() => {
+    getRegistersById(id);
+  }, []);
 
   return (
     <>
-      <Typography align="center" variant="h4" color="error">
-        Registrarse
+      <Typography align="center" variant="h4" color="primary">
+        Editar registro
       </Typography>
-      <form onSubmit={store}>
+      <form onSubmit={update}>
         <Box my={2}>
           <Card>
             <CardContent>
               <Grid container direction="row" spacing={2}>
                 <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                   <TextField
-                    required
-                    label="Nombre"
+                    value={name}
                     type="text"
                     name="firstname"
                     margin="dense"
                     fullWidth
                     variant="outlined"
-                    color="success"
-                    helperText="Campo obligatorio"
-                    onChange={(ev) => setName(ev.target.value)}
+                    color="warning"
+                    // onChange={(ev)=>setName(ev.target.value)}
                   />
 
                   <TextField
-                    required
-                    label="Apellido paterno"
+                    // label="Apellido paterno"
+                    value={lastName}
                     type="text"
                     name="lastname"
                     margin="dense"
                     fullWidth
                     variant="outlined"
-                    color="success"
-                    helperText="Campo obligatorio"
-                    onChange={(ev) => setLastName(ev.target.value)}
+                    color="warning"
+                    // onChange={(ev)=>setLastName(ev.target.value)}
                   />
 
                   <TextField
-                    required
-                    label="Apellido materno"
+                    value={secondLastName}
                     type="text"
                     name="lastname"
                     margin="dense"
                     fullWidth
                     variant="outlined"
-                    color="success"
-                    helperText="Campo obligatorio"
-                    onChange={(ev) => setSecondLastName(ev.target.value)}
+                    color="warning"
+                    // onChange={(ev)=>setSecondLastName(ev.target.value)}
                   />
                 </Grid>
                 <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
-                  <FormControl sx={{ width: "100%" }} required>
-                    <InputLabel id="demo-label" color="success">
+                  <FormControl sx={{ width: "100%" }}>
+                    <InputLabel id="demo-label" color="warning" required>
                       Genero
                     </InputLabel>
                     <Select
-                      name="rol"
+                      name="gender"
                       fullWidth
                       label="Genero"
-                      color="success"
-                      onChange={(ev) => setGenre(ev.target.value)}
+                      color="warning"
+                      // onChange={(ev)=>setGenre(ev.target.value)}
                     >
                       <MenuItem></MenuItem>
                       {genreData &&
@@ -147,58 +160,46 @@ export const Forms = () => {
                     <TextField
                       required
                       error={phone && !isPhoneValid}
-                      label="Teléfono"
                       type="number"
                       name="tel"
                       margin="dense"
                       fullWidth
                       variant="outlined"
-                      color="success"
+                      color="warning"
                       helperText="Campo obligatorio"
                       onChange={validatePhone}
                     />
 
                     <TextField
-                      required
-                      label="Correo Electronico"
+                      value={email}
                       type="email"
                       name="lastname"
                       margin="dense"
                       fullWidth
                       variant="outlined"
-                      color="success"
-                      helperText="Campo obligatorio"
-                      onChange={(ev) => setEmail(ev.target.value)}
+                      color="warning"
+                      // onChange={(ev)=>setEmail(ev.target.value)}
                     />
                     <Box sx={{ "& > button": { m: 1 } }}>
                       <Button
                         size="small"
                         variant="contained"
-                        color="success"
+                        color="primary"
                         type="submit"
+                        onClick={() => update()}
                         startIcon={<Send />}
-                        onClick={() =>
-                          handleSubmit(
-                            name,
-                            lastName,
-                            secondLastName,
-                            Data,
-                            phone,
-                            email
-                          )
-                        }
                         // disabled={!isPhoneValid}
                       >
-                        Enviar
+                        Actualizar
                       </Button>
-                      <Link to="/cards" className="btn">
+                      <Link to="/register" className="btn">
                         <Button
                           size="small"
                           variant="contained"
-                          color="primary"
-                          startIcon={<Home />}
+                          color="error"
+                          startIcon={<Cancel />}
                         >
-                          Home
+                          Cancelar
                         </Button>
                       </Link>
                     </Box>
