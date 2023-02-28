@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 
@@ -23,6 +24,7 @@ import { Delete, Edit, Home } from "@mui/icons-material";
 
 export const Registers = () => {
   const [registers, setRegisters] = useState([]);
+  const [tableRegisters, setTableRegisters] = useState([]);
   const registersCollection = collection(db, "registros");
 
   const getRegisters = async () => {
@@ -30,6 +32,7 @@ export const Registers = () => {
     // console.log(data.docs);
 
     setRegisters(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    setTableRegisters(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     // console.log(registers);
   };
 
@@ -62,7 +65,20 @@ export const Registers = () => {
     const searchTerm = (e) => {
       setSearch(e.target.vale)
       console.log(e.target.value)
+      filter((e.target.value))
     }
+
+    const filter = (searchTerm) => {
+      let searchResult = tableRegisters.filter(( elem ) => {
+        if ( elem.name.toString().toLowerCase().includes(searchTerm.toLowerCase())
+        || elem.gender.toString().toLowerCase().includes(searchTerm.toLowerCase())
+        ){
+          return elem;
+        }
+      });
+      setRegisters(searchResult);
+    }
+ 
 
   useEffect(() => {
     getRegisters();
