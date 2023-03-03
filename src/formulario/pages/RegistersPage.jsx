@@ -71,7 +71,11 @@ export const Registers = () => {
     const filter = (searchTerm) => {
       let searchResult = tableRegisters.filter(( elem ) => {
         if ( elem.name.toString().toLowerCase().includes(searchTerm.toLowerCase())
+        || elem.lastName.toString().toLowerCase().includes(searchTerm.toLowerCase())
+        || elem.secondLastName.toString().toLowerCase().includes(searchTerm.toLowerCase())
         || elem.gender.toString().toLowerCase().includes(searchTerm.toLowerCase())
+        || elem.tel.toString().toLowerCase().includes(searchTerm.toLowerCase())
+        || elem.email.toString().toLowerCase().includes(searchTerm.toLowerCase())
         ){
           return elem;
         }

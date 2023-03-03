@@ -1,5 +1,5 @@
 import { Edit } from "@mui/icons-material";
-import { Button, Card, CardHeader, CardMedia, Grid } from "@mui/material";
+import { Button, Card, CardMedia, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export const Cards = () => {
@@ -11,9 +11,8 @@ export const Cards = () => {
       alignItems="center"
       spacing={2}
     >
-      <Grid item xs={6} ms={6} md={6} xl={6} lg={6}>
+      <Grid item xs={4} ms={4} md={4} xl={4} lg={4}>
         <Card>
-          <CardHeader />
           <CardMedia
             component="img"
             image={`https://avatars.githubusercontent.com/u/85906328?v=4`}
