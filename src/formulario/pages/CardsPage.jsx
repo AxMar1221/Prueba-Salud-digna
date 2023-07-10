@@ -15,7 +15,7 @@ export const Cards = () => {
         <Card>
           <CardMedia
             component="img"
-            image={`https://avatars.githubusercontent.com/u/85906328?v=4`}
+            image={`https://www.animationconnection.com/assets/artwork/1627578800-575-5603-homer-simpson-with-bart-and-lisa-on-the-couch.jpg`}
             sx={{ borderRadius: '50%'}}
           />
         </Card>
