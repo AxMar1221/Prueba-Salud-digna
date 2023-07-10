@@ -25,6 +25,8 @@ export const Cards = () => {
 
   return (
     <div className="container ">
+      <div className="container mt-3">{gridContent}</div>
+
       <div className="text-center">
         <Link to="/form" className="btn">
           <Button
@@ -48,7 +50,6 @@ export const Cards = () => {
         </Link>
       </div>
 
-      <div className="container mt-3">{gridContent}</div>
     </div>
   );
 };
