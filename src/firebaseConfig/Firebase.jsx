@@ -3,13 +3,13 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDFlNa6cqdyD06MWgQI_BavsQF_tm47x4A",
-  authDomain: "formulario-sd.firebaseapp.com",
-  projectId: "formulario-sd",
-  storageBucket: "formulario-sd.appspot.com",
-  messagingSenderId: "313655400887",
-  appId: "1:313655400887:web:ecfc1627ba98307048f032",
-  measurementId: "G-K352TWDBEQ"
+  apiKey: "AIzaSyCifbzB2BIsG30Ik3_wxf8docx5Q7ftZho",
+  authDomain: "registros-editables.firebaseapp.com",
+  projectId: "registros-editables",
+  storageBucket: "registros-editables.appspot.com",
+  messagingSenderId: "966202669927",
+  appId: "1:966202669927:web:35bc609c2a6592af694dc2",
+  measurementId: "G-CG7DHQ6LHB"
 };
 
 const app = initializeApp(firebaseConfig);

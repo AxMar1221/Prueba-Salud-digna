@@ -88,7 +88,7 @@ export const Registers = () => {
     getRegisters();
   }, []);
 
-  const tab = <>&nbsp;&nbsp;</>;
+  // const tab = <>&nbsp;&nbsp;</>;
 
   return (
     <>
@@ -138,7 +138,7 @@ export const Registers = () => {
                   <TableCell align="center">{registers.tel}</TableCell>
                   <TableCell align="left">{registers.email}</TableCell>
                   <TableCell>
-                    <Link to={`/edit/${registers.id}`} className="btn">
+                    {/* <Link to={`/edit/${registers.id}`} className="btn">
                       <Button
                         size="small"
                         variant="contained"
@@ -147,7 +147,7 @@ export const Registers = () => {
                       >
                         {tab}Editar{tab}
                       </Button>
-                    </Link>
+                    </Link> */}
                   </TableCell>
                   <TableCell>
                     <Link className="btn">

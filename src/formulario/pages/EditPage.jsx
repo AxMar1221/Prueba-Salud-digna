@@ -4,29 +4,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { getDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig/Firebase";
 import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  FormControl,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-  Typography,
+  Box, Button, Card, CardContent, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography,
 } from "@mui/material";
 import { Cancel, Send } from "@mui/icons-material";
 
 const genreData = [
-  {
-    id: 1,
-    desc: "Mujer",
-  },
-  {
-    id: 2,
-    desc: "Hombre",
-  },
+  { id: 1, desc: "Mujer" }, { id: 2, desc: "Hombre" },
 ];
 
 export const EditPage = () => {
@@ -42,15 +25,11 @@ export const EditPage = () => {
 
   function validatePhone(event) {
     const val = event.target.value;
-
     let count = 0;
-
     for (let i = 0; i < val.length; i++)
       if (val.charAt(i) in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]) count++;
-
     let isValid = count === 10 ? true : false;
     setIsPhoneValid(isValid);
-
     setPhone(val);
   }
 
