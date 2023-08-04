@@ -88,11 +88,10 @@ export const EditPage = () => {
                     fullWidth
                     variant="outlined"
                     color="warning"
-                    // onChange={(ev)=>setName(ev.target.value)}
+                    onChange={(ev)=>setName(ev.target.value)}
                   />
 
                   <TextField
-                    // label="Apellido paterno"
                     value={lastName}
                     type="text"
                     name="lastname"
@@ -100,7 +99,7 @@ export const EditPage = () => {
                     fullWidth
                     variant="outlined"
                     color="warning"
-                    // onChange={(ev)=>setLastName(ev.target.value)}
+                    onChange={(ev)=>setLastName(ev.target.value)}
                   />
 
                   <TextField
@@ -111,7 +110,7 @@ export const EditPage = () => {
                     fullWidth
                     variant="outlined"
                     color="warning"
-                    // onChange={(ev)=>setSecondLastName(ev.target.value)}
+                    onChange={(ev)=>setSecondLastName(ev.target.value)}
                   />
                 </Grid>
                 <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
@@ -124,7 +123,7 @@ export const EditPage = () => {
                       fullWidth
                       label="Genero"
                       color="warning"
-                      // onChange={(ev)=>setGenre(ev.target.value)}
+                      onChange={(ev)=>setGenre(ev.target.value)}
                     >
                       <MenuItem></MenuItem>
                       {genreData &&
@@ -157,7 +156,7 @@ export const EditPage = () => {
                       fullWidth
                       variant="outlined"
                       color="warning"
-                      // onChange={(ev)=>setEmail(ev.target.value)}
+                      onChange={(ev)=>setEmail(ev.target.value)}
                     />
                     <Box sx={{ "& > button": { m: 1 } }}>
                       <Button
@@ -167,7 +166,7 @@ export const EditPage = () => {
                         type="submit"
                         onClick={() => update()}
                         startIcon={<Send />}
-                        // disabled={!isPhoneValid}
+                        disabled={!isPhoneValid}
                       >
                         Actualizar
                       </Button>

@@ -40,7 +40,7 @@ export const Navbar = () => {
       <div className="navbar-collapse collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
         <ul className="navbar-nav ml-auto">
           <span className="nav-item nav-link active">
-            <strong>Mario Hernández</strong>
+          <strong>Mario Hernández</strong>
             <IconButton>
               <Avatar
                 alt="Tachi GitHub"
@@ -49,7 +49,7 @@ export const Navbar = () => {
               />
             </IconButton>
             <small>Tachi</small>
-          </span>
+            </span>
           <Button
             size="small"
             variant="outlined"
