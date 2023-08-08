@@ -16,7 +16,7 @@ export const Cards = () => {
           <CardMedia
             component="img"
             image={`https://www.animationconnection.com/assets/artwork/1627578800-575-5603-homer-simpson-with-bart-and-lisa-on-the-couch.jpg`}
-            sx={{ borderRadius: '50%'}}
+            sx={{ borderRadius: "50%" }}
           />
         </Card>
       </Grid>
@@ -49,7 +49,6 @@ export const Cards = () => {
           </Button>
         </Link>
       </div>
-
     </div>
   );
 };

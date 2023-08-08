@@ -4,12 +4,23 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { getDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig/Firebase";
 import {
-  Box, Button, Card, CardContent, FormControl, Grid, InputLabel, MenuItem, Select, TextField, Typography,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
 } from "@mui/material";
 import { Cancel, Send } from "@mui/icons-material";
 
 const genreData = [
-  { id: 1, desc: "Mujer" }, { id: 2, desc: "Hombre" },
+  { id: 1, desc: "Mujer" },
+  { id: 2, desc: "Hombre" },
 ];
 
 export const EditPage = () => {
@@ -88,7 +99,7 @@ export const EditPage = () => {
                     fullWidth
                     variant="outlined"
                     color="warning"
-                    onChange={(ev)=>setName(ev.target.value)}
+                    onChange={(ev) => setName(ev.target.value)}
                   />
 
                   <TextField
@@ -99,7 +110,7 @@ export const EditPage = () => {
                     fullWidth
                     variant="outlined"
                     color="warning"
-                    onChange={(ev)=>setLastName(ev.target.value)}
+                    onChange={(ev) => setLastName(ev.target.value)}
                   />
 
                   <TextField
@@ -110,7 +121,7 @@ export const EditPage = () => {
                     fullWidth
                     variant="outlined"
                     color="warning"
-                    onChange={(ev)=>setSecondLastName(ev.target.value)}
+                    onChange={(ev) => setSecondLastName(ev.target.value)}
                   />
                 </Grid>
                 <Grid item xs={6} sm={6} md={6} lg={6} xl={6}>
@@ -123,7 +134,7 @@ export const EditPage = () => {
                       fullWidth
                       label="Genero"
                       color="warning"
-                      onChange={(ev)=>setGenre(ev.target.value)}
+                      onChange={(ev) => setGenre(ev.target.value)}
                     >
                       <MenuItem></MenuItem>
                       {genreData &&
@@ -136,6 +147,7 @@ export const EditPage = () => {
                   </FormControl>
                   <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                     <TextField
+                      value={phone}
                       required
                       error={phone && !isPhoneValid}
                       type="number"
@@ -156,7 +168,7 @@ export const EditPage = () => {
                       fullWidth
                       variant="outlined"
                       color="warning"
-                      onChange={(ev)=>setEmail(ev.target.value)}
+                      onChange={(ev) => setEmail(ev.target.value)}
                     />
                     <Box sx={{ "& > button": { m: 1 } }}>
                       <Button

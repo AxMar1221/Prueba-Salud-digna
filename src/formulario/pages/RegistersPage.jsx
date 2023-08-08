@@ -59,30 +59,39 @@ export const Registers = () => {
     });
   };
 
-    // ---!!!BUSQUEDA!!!---
-    const [search, setSearch] = useState('');
+  // ---!!!BUSQUEDA!!!---
+  const [search, setSearch] = useState("");
 
-    const searchTerm = (e) => {
-      setSearch(e.target.vale)
-      console.log(e.target.value)
-      filter((e.target.value))
-    }
+  const searchTerm = (e) => {
+    setSearch(e.target.vale);
+    console.log(e.target.value);
+    filter(e.target.value);
+  };
 
-    const filter = (searchTerm) => {
-      let searchResult = tableRegisters.filter(( elem ) => {
-        if ( elem.name.toString().toLowerCase().includes(searchTerm.toLowerCase())
-        || elem.lastName.toString().toLowerCase().includes(searchTerm.toLowerCase())
-        || elem.secondLastName.toString().toLowerCase().includes(searchTerm.toLowerCase())
-        || elem.gender.toString().toLowerCase().includes(searchTerm.toLowerCase())
-        || elem.tel.toString().toLowerCase().includes(searchTerm.toLowerCase())
-        || elem.email.toString().toLowerCase().includes(searchTerm.toLowerCase())
-        ){
-          return elem;
-        }
-      });
-      setRegisters(searchResult);
-    }
- 
+  const filter = (searchTerm) => {
+    let searchResult = tableRegisters.filter((elem) => {
+      if (
+        elem.name.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
+        elem.lastName
+          .toString()
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        elem.secondLastName
+          .toString()
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        elem.gender
+          .toString()
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        elem.tel.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
+        elem.email.toString().toLowerCase().includes(searchTerm.toLowerCase())
+      ) {
+        return elem;
+      }
+    });
+    setRegisters(searchResult);
+  };
 
   useEffect(() => {
     getRegisters();
@@ -122,7 +131,9 @@ export const Registers = () => {
                 <TableCell align="center">Genero</TableCell>
                 <TableCell align="center">Telefono</TableCell>
                 <TableCell align="center">Email</TableCell>
-                <TableCell align="center" colSpan={2}>Acciones</TableCell>
+                <TableCell align="center" colSpan={2}>
+                  Acciones
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
