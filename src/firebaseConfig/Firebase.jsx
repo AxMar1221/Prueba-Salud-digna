@@ -3,13 +3,13 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC5SuSA8pK5ba5V_pkrywr6lxZ7LVe3Oks",
-  authDomain: "registros-editables-ad8a3.firebaseapp.com",
-  projectId: "registros-editables-ad8a3",
-  storageBucket: "registros-editables-ad8a3.appspot.com",
-  messagingSenderId: "76800259957",
-  appId: "1:76800259957:web:9abf3e4af6c76a0238c53c",
-  measurementId: "G-WXXB7WE1JB"
+  apiKey: "AIzaSyCGq3me5g_Q0tbkNkDcZqzz-05KlsbUzLU",
+  authDomain: "registros-75709.firebaseapp.com",
+  projectId: "registros-75709",
+  storageBucket: "registros-75709.appspot.com",
+  messagingSenderId: "409646002892",
+  appId: "1:409646002892:web:b60b08b421f1a6388f0869",
+  measurementId: "G-LGZK042NFG"
 };
 
 const app = initializeApp(firebaseConfig);
